@@ -7,6 +7,7 @@
 ## Persiapan Topologi
 ## Cara Pengerjaan
 ### Screenshot
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/b5b1350c-e88e-4d95-b3d8-fe6dc97c4a33)
 ### Kendala yang Dihadapi
 
 
