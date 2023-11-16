@@ -6,6 +6,144 @@
 
 ## Persiapan Topologi
 ## Cara Pengerjaan
+Config
+* Aura
+  ```
+  auto eth0
+  iface eth0 inet dhcp
+
+  auto eth1
+  iface eth1 inet static
+  	address 192.239.1.1
+  	netmask 255.255.255.0
+  
+  auto eth2
+  iface eth2 inet static
+  	address 192.239.2.1
+  	netmask 255.255.255.0
+  
+  auto eth3
+  iface eth3 inet static
+  	address 192.239.3.254
+  	netmask 255.255.255.0
+  
+  auto eth4
+  iface eth4 inet static
+  	address 192.239.4.254
+  	netmask 255.255.255.0
+  ```
+* Himmel = DHCP server
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.1.2
+  	netmask 255.255.255.0
+  	gateway 192.239.1.1
+  ```
+* Heiter = DNS server
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.1.3
+  	netmask 255.255.255.0
+  	gateway 192.239.1.1
+  ```
+* Denken = database server
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.2.2
+  	netmask 255.255.255.0
+  	gateway 192.239.2.1
+  ```
+* Eisen = load balancer
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.2.3
+  	netmask 255.255.255.0
+  	gateway 192.239.2.1
+  ```
+* Frieren = laravel worker
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.4.3
+  	netmask 255.255.255.0
+  	gateway 192.239.4.254
+  ```
+* Flamme = laravel worker
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.4.4
+  	netmask 255.255.255.0
+  	gateway 192.239.4.254
+  ```
+* Fern = laravel worker
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.4.5
+  	netmask 255.255.255.0
+  	gateway 192.239.4.254
+  ```
+* Lawine = php worker
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.3.3
+  	netmask 255.255.255.0
+  	gateway 192.239.3.254
+  ```
+* Linie = php worker
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.3.2
+  	netmask 255.255.255.0
+  	gateway 192.239.3.254
+  ```
+* Lugner = php worker
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.3.1
+  	netmask 255.255.255.0
+  	gateway 192.239.3.254
+  ```
+* Revolte = client
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.3.5
+  	netmask 255.255.255.0
+  	gateway 192.239.3.254
+  ```
+* Richter = client
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.3.4
+  	netmask 255.255.255.0
+  	gateway 192.239.3.254
+  ```
+* Sein = client
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.4.1
+  	netmask 255.255.255.0
+  	gateway 192.239.4.254
+  ```
+* Stark = client
+  ```
+  auto eth0
+  iface eth0 inet static
+  	address 192.239.4.2
+  	netmask 255.255.255.0
+  	gateway 192.239.4.254
+  ```
 ### Screenshot
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/b5b1350c-e88e-4d95-b3d8-fe6dc97c4a33)
 ### Kendala yang Dihadapi
