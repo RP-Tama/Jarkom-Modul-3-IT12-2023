@@ -88,6 +88,7 @@
 ## Soal 12
 ### Cara Pengerjaan
 ### Screenshot
+![WhatsApp Image 2023-11-16 at 10 52 33](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/a8e48986-89da-402b-abcc-47d275a376a7)
 ### Kendala yang Dihadapi
 
 
