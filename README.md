@@ -865,6 +865,8 @@ Mengecek pada laravel worker dengan perintah
 mariadb --host=192.239.2.1 --port=3306 --user=kelompokit12 --password=passwordit12 dbkelompokit12 -e "SHOW DATABASES;"
 ```
 ### Screenshot
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/113072294/c8484d89-40fa-4676-8a1d-1e53e981e07c)
+
 ### Kendala yang Dihadapi
 Tidak ada kendala
 
@@ -990,6 +992,8 @@ lynx localhost:8002
 lynx localhost:8003
 ```
 ### Screenshot
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/113072294/61c9f7fa-ab24-4c61-9733-06551a926a52)
+
 ### Kendala yang Dihadapi
 Tidak ada kendala
 
@@ -1082,6 +1086,8 @@ Melakukan testing pada client
 ab -n 100 -c 10 -p login.json -T application/json http://www.riegel.canyon.it12.com/api/auth/login
 ```
 ### Screenshot
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/113072294/9260c379-c5d0-4958-b9fa-8e2270ce9c72)
+
 ### Kendala yang Dihadapi
 Tidak ada kendala
 
