@@ -371,7 +371,7 @@ $TTL    604800
 ;
 @       IN      NS      riegel.canyon.it12.com.
 @       IN      A       192.239.4.1     ; IP Fern
-www     IN      CNAME   riegel.canyon.it12.com.' > /etc/bind/jarkom/riegel.canyon.a09.com
+www     IN      CNAME   riegel.canyon.it12.com.' > /etc/bind/jarkom/riegel.canyon.it12.com
 
 echo '
 ; BIND data file for local loopback interface
@@ -384,7 +384,7 @@ $TTL    604800
                         2419200         ; Expire
                          604800 )       ; Negative Cache TTL
 ;
-@       IN      NS      granz.channel.a09.com.
+@       IN      NS      granz.channel.it12.com.
 @       IN      A       192.239.3.1     ; IP Lugner
 www     IN      CNAME   granz.channel.it12.com.' > /etc/bind/jarkom/granz.channel.it12.com
 
@@ -620,7 +620,7 @@ $TTL    604800
 ;
 @       IN      NS      riegel.canyon.it12.com.
 @       IN      A       192.239.2.2     ; IP LB Eiken
-www     IN      CNAME   riegel.canyon.it12.com.' > /etc/bind/jarkom/riegel.canyon.a09.com
+www     IN      CNAME   riegel.canyon.it12.com.' > /etc/bind/jarkom/riegel.canyon.it12.com
 
 echo '
 ; BIND data file for local loopback interface
@@ -830,7 +830,7 @@ mysql -u root -p
 ```
 CREATE USER 'kelompokit12'@'%' IDENTIFIED BY 'passwordit12';
 CREATE USER 'kelompokit12'@'localhost' IDENTIFIED BY 'passwordit12';
-CREATE DATABASE dbkelompoka09;
+CREATE DATABASE dbkelompokit12;
 GRANT ALL PRIVILEGES ON *.* TO 'kelompokit12'@'%';
 GRANT ALL PRIVILEGES ON *.* TO 'kelompokit12'@'localhost';
 FLUSH PRIVILEGES;
@@ -1051,7 +1051,7 @@ service nginx restart
 ```
 Melakukan testing pada client
 ```
-ab -n 100 -c 10 -p login.json -T application/json http://www.riegel.canyon.a09.com/api/auth/login
+ab -n 100 -c 10 -p login.json -T application/json http://www.riegel.canyon.it12.com/api/auth/login
 ```
 ### Screenshot
 ### Kendala yang Dihadapi
