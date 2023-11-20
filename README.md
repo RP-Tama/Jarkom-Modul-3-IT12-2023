@@ -781,7 +781,7 @@ Menambahkan fixed address pada client yang ditambahkan pada konfigurasi dhcp ser
 ```
 host Revolte {
     harware ethernet fe:c0:13:f5:1c:02;
-    fixed-address 192.173.3.69;
+    fixed-address 192.239.3.69;
 }
 ```
 Restart ulang node client (misalkan revolte)
@@ -834,42 +834,336 @@ mariadb --host=192.239.2.1 --port=3306 --user=kelompokit12 --password=passwordit
 
 ## Soal 14
 ### Cara Pengerjaan
+Melakukan konfigurasi pada Frieren, Flamme. dan Fern dengan menginstall composer
+```
+wget https://getcomposer.org/download/2.0.13/composer.phar
+chmod +x composer.phar
+mv composer.phar /usr/local/bin/composer
+```
+Melakukan install git dan cloning dari resource yang diberikan
+```
+apt-get install git -y
+cd /var/www && git clone https://github.com/martuafernando/laravel-praktikum-jarkom
+cd /var/www/laravel-praktikum-jarkom && composer update
+```
+Melakukan konfigurasi pada worker
+```
+cd /var/www/laravel-praktikum-jarkom && cp .env.example .env
+echo 'APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
 
+LOG_CHANNEL=stack
+LOG_DEPRECATIONS_CHANNEL=null
+LOG_LEVEL=debug
+
+DB_CONNECTION=mysql
+DB_HOST=192.239.2.1
+DB_PORT=3306
+DB_DATABASE=dbkelompokit12
+DB_USERNAME=kelompokit12
+DB_PASSWORD=passwordit12
+
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+
+MEMCACHED_HOST=127.0.0.1
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_MAILER=smtp
+MAIL_HOST=mailpit
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+AWS_USE_PATH_STYLE_ENDPOINT=false
+
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_HOST=
+PUSHER_PORT=443
+PUSHER_SCHEME=https
+PUSHER_APP_CLUSTER=mt1
+
+VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+VITE_PUSHER_HOST="${PUSHER_HOST}"
+VITE_PUSHER_PORT="${PUSHER_PORT}"
+VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
+VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"' > /var/www/laravel-praktikum-jarkom/.env
+cd /var/www/laravel-praktikum-jarkom && php artisan key:generate
+cd /var/www/laravel-praktikum-jarkom && php artisan config:cache
+cd /var/www/laravel-praktikum-jarkom && php artisan migrate
+cd /var/www/laravel-praktikum-jarkom && php artisan db:seed
+cd /var/www/laravel-praktikum-jarkom && php artisan storage:link
+cd /var/www/laravel-praktikum-jarkom && php artisan jwt:secret
+cd /var/www/laravel-praktikum-jarkom && php artisan config:clear
+chown -R www-data.www-data /var/www/laravel-praktikum-jarkom/storage
+```
+Melakukan konfigurasi nginx pada masing masing worker
+```
+192.239.4.1:8001; # Fern 
+192.239.4.2:8002; # Flamme
+192.239.4.3:8003; # Frieren
+```
+```
+echo 'server {
+    root /var/www/laravel-praktikum-jarkom/public;
+
+    index index.php index.html index.htm;
+    server_name _;
+
+    location / {
+            try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    # pass PHP scripts to FastCGI server
+    location ~ \.php$ {
+      include snippets/fastcgi-php.conf;
+      fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
+    }
+
+    location ~ /\.ht {
+            deny all;
+    }
+
+    error_log /var/log/nginx/implementasi_error.log;
+    access_log /var/log/nginx/implementasi_access.log;
+}' > /etc/nginx/sites-available/laravel-worker
+```
+Menjalankan command
+```
+lynx localhost:8001
+lynx localhost:8002
+lynx localhost:8003
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 15
 ### Cara Pengerjaan
+Melakukan testing dengan apache benchmark pada worker dan dilakukan oleh client.
+Sebelumnya, dilakukan pengiriman pada endpoint /api/auth/register menggunakan file.json
+```
+echo '
+{
+  "username": "kelompokit12",
+  "password": "passwordit12"
+}' > register.json
+```
+Memasukkan command pada client
+```
+ab -n 100 -c 10 -p register.json -T application/json http://192.239.4.1:8001/api/auth/register
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 16
 ### Cara Pengerjaan
+Melakukan testing dengan apache benchmark pada worker dan dilakukan oleh client.
+Sebelumnya, dilakukan pengiriman pada endpoint /api/auth/login menggunakan file.json
+```
+echo '
+{
+  "username": "kelompokit12",
+  "password": "passwordit12"
+}' > login.json
+```
+Memasukkan command pada client
+```
+ab -n 100 -c 10 -p register.json -T application/json http://192.239.4.1:8001/api/auth/login
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 17
 ### Cara Pengerjaan
+Melakukan testing dengan apache benchmark pada worker dan dilakukan oleh client.
+Sebelumnya, dilakukan untuk mendapatkan token dengan
+```
+curl -X POST -H "Content-Type: application/json" -d @login.json http://192.239.4.1:8001/api/auth/login > login_output.txt
+```
+Menjalankan command untuk set token
+```
+token=$(cat login_output.txt | jq -r '.token')
+```
+Melakukan testing
+```
+ab -n 100 -c 10 -H "Authorization: Bearer $token" http://192.239.4.1:8001/api/me
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 18
 ### Cara Pengerjaan
+Melakukan konfigurasi nginx untuk melakukan load balancing
+```
+echo 'upstream worker {
+    server 192.239.4.1:8001;
+    server 192.239.4.2:8002;
+    server 192.239.4.3:8003;
+}
+
+server {
+    listen 80;
+    server_name riegel.canyon.it12.com www.riegel.canyon.it12.com;
+
+    location / {
+        proxy_pass http://worker;
+    }
+} 
+' > /etc/nginx/sites-available/laravel-worker
+
+ln -s /etc/nginx/sites-available/laravel-worker /etc/nginx/sites-enabled/laravel-worker
+
+service nginx restart
+```
+Melakukan testing pada client
+```
+ab -n 100 -c 10 -p login.json -T application/json http://www.riegel.canyon.a09.com/api/auth/login
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 19
 ### Cara Pengerjaan
+Melakukan 4 konfigurasi untuk proses package manager di masing masing worker
+```
+# Setup Awal
+echo '[www]
+user = www-data
+group = www-data
+listen = /run/php/php8.0-fpm.sock
+listen.owner = www-data
+listen.group = www-data
+php_admin_value[disable_functions] = exec,passthru,shell_exec,system
+php_admin_flag[allow_url_fopen] = off
+
+; Choose how the process manager will control the number of child processes.
+
+pm = dynamic
+pm.max_children = 5
+pm.start_servers = 2
+pm.min_spare_servers = 1
+pm.max_spare_servers = 3' > /etc/php/8.0/fpm/pool.d/www.conf
+
+service php8.0-fpm restart
+```
+```
+echo '[www]
+user = www-data
+group = www-data
+listen = /run/php/php8.0-fpm.sock
+listen.owner = www-data
+listen.group = www-data
+php_admin_value[disable_functions] = exec,passthru,shell_exec,system
+php_admin_flag[allow_url_fopen] = off
+
+; Choose how the process manager will control the number of child processes.
+
+pm = dynamic
+pm.max_children = 25
+pm.start_servers = 5
+pm.min_spare_servers = 3
+pm.max_spare_servers = 10' > /etc/php/8.0/fpm/pool.d/www.conf
+
+service php8.0-fpm restart
+```
+```
+echo '[www]
+user = www-data
+group = www-data
+listen = /run/php/php8.0-fpm.sock
+listen.owner = www-data
+listen.group = www-data
+php_admin_value[disable_functions] = exec,passthru,shell_exec,system
+php_admin_flag[allow_url_fopen] = off
+
+; Choose how the process manager will control the number of child processes.
+
+pm = dynamic
+pm.max_children = 50
+pm.start_servers = 8
+pm.min_spare_servers = 5
+pm.max_spare_servers = 15' > /etc/php/8.0/fpm/pool.d/www.conf
+
+service php8.0-fpm restart
+```
+```
+echo '[www]
+user = www-data
+group = www-data
+listen = /run/php/php8.0-fpm.sock
+listen.owner = www-data
+listen.group = www-data
+php_admin_value[disable_functions] = exec,passthru,shell_exec,system
+php_admin_flag[allow_url_fopen] = off
+
+; Choose how the process manager will control the number of child processes.
+
+pm = dynamic
+pm.max_children = 75
+pm.start_servers = 10
+pm.min_spare_servers = 5
+pm.max_spare_servers = 20' > /etc/php/8.0/fpm/pool.d/www.conf
+
+service php8.0-fpm restart
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 20
 ### Cara Pengerjaan
+Menambahkan algoritma pada load balancer dengan least connection karena pada konfigurasi sebelumnya hasil yang diberikan dari worker masih kurang dalam peningkatan performa worker. Maka dari itu dengan dilakukan load balancer ini dapat membuat prioritas beban berdasarkan urutan dari terendah 
+```
+echo 'upstream worker {
+    least_conn;
+    server 192.239.4.1:8001;
+    server 192.239.4.2:8002;
+    server 192.239.4.3:8003;
+}
+
+server {
+    listen 80;
+    server_name riegel.canyon.it12.com www.riegel.canyon.it12.com;
+
+    location / {
+        proxy_pass http://worker;
+    }
+} 
+' > /etc/nginx/sites-available/laravel-worker
+
+service nginx restart
+```
+Menambahkan setup berikut pada package manager
+```
+pm = dynamic
+pm.max_children = 75
+pm.start_servers = 10
+pm.min_spare_servers = 5
+pm.max_spare_servers = 20
+```
 ### Screenshot
 ### Kendala yang Dihadapi
