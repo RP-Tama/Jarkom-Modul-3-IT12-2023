@@ -147,7 +147,7 @@ Config
 ### Screenshot
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/b5b1350c-e88e-4d95-b3d8-fe6dc97c4a33)
 ### Kendala yang Dihadapi
-
+Sempat mengalami kesulitan saat penyesuaian konfigurasi
 
 ## Soal 0
 ### Cara Pengerjaan
@@ -405,11 +405,11 @@ service bind9 start
 ```
 ### Screenshot
 ![WhatsApp Image 2023-11-18 at 23 32 03](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/3b09b378-9bcf-4780-bbc6-160d73a948dc)
-![WhatsApp Image 2023-11-18 at 23 31 46](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/a720a13e-6962-4532-88f8-4d1024a06067)
+![WhatsApp Image 2023-11-20 at 16 16 12](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/11480e57-ea06-46cd-8893-05e289076be3)
 ![WhatsApp Image 2023-11-18 at 23 31 32](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/03dca801-2b9c-441f-8c9d-f825f78c9dc8)
-![WhatsApp Image 2023-11-18 at 23 31 16](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/bb40d358-b44b-4919-acdb-98bfe4a34c16)
+![WhatsApp Image 2023-11-20 at 16 16 57](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/4624f282-6bd0-4ba4-8c8d-cbb1f1973bbf)
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 2
 ### Cara Pengerjaan
@@ -428,8 +428,9 @@ subnet 192.239.3.0 netmask 255.255.255.0 {
 }' > /etc/dhcp/dhcpd.conf
 ```
 ### Screenshot
+![WhatsApp Image 2023-11-20 at 16 16 38](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/684dfa5a-beb9-425b-ad53-6d1d9acf4e93)
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 3
 ### Cara Pengerjaan
@@ -455,9 +456,8 @@ subnet 192.239.4.0 netmask 255.255.255.0 {
 ```
 ### Screenshot
 ![WhatsApp Image 2023-11-18 at 16 37 59](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/144fbcde-daed-4d47-9c33-d4b1e0c098c1)
-
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 4
 ### Cara Pengerjaan
@@ -500,9 +500,8 @@ Melakukan uncommend pada file ```/etc/sysctl.conf``` pada bagian ```net.ipv4.ip_
 Melakukan restart di 4 client
 ### Screenshot
 ![WhatsApp Image 2023-11-18 at 17 04 44](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/ce8849da-5745-4e87-ad05-475c393856d1)
-
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 5
 ### Cara Pengerjaan
@@ -558,7 +557,7 @@ service isc-dhcp-server restart
 ### Screenshot
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/8de608f4-5f56-499c-9ffb-e4064120c911)
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 6
 ### Cara Pengerjaan
@@ -602,7 +601,7 @@ Menjalankan command ```lynx localhost``` di masing masing worker
 ![WhatsApp Image 2023-11-19 at 00 02 55](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/849cb759-1419-48a7-ad1f-55f65ed548fa)
 ![WhatsApp Image 2023-11-19 at 00 09 31](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/6b1fc8f4-da8c-4d9f-b2c6-105a1559bea5)
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 7
 ### Cara Pengerjaan
@@ -674,7 +673,7 @@ ab -n 1000 -c 100 http://www.granz.channel.it12.com/
 ```
 ### Screenshot
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 8
 ### Cara Pengerjaan
@@ -684,7 +683,7 @@ ab -n 200 -c 10 http://www.granz.channel.it12.com/
 ```
 ### Screenshot
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 9
 ### Cara Pengerjaan
@@ -694,7 +693,7 @@ ab -n 100 -c 10 http://www.granz.channel.it12.com/
 ```
 ### Screenshot
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 10
 ### Cara Pengerjaan
@@ -713,7 +712,7 @@ Mengakses url ```http://www.granz.channel.it12.com/```
 ### Screenshot
 ![WhatsApp Image 2023-11-16 at 09 46 48](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/54ab346b-a241-4165-87b8-b21296732892)
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 11
 ### Cara Pengerjaan
@@ -752,7 +751,7 @@ lynx www.granz.channel.it12.com/its
 ### Screenshot
 ![WhatsApp Image 2023-11-16 at 10 11 03](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/8ea9cdfd-2154-4ac0-90d8-97b17680df2b)
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 12
 ### Cara Pengerjaan
@@ -802,7 +801,7 @@ Restart ulang node client (misalkan revolte)
 
 ![WhatsApp Image 2023-11-16 at 10 52 33](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/a8e48986-89da-402b-abcc-47d275a376a7)
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 13
 ### Cara Pengerjaan
@@ -842,7 +841,7 @@ mariadb --host=192.239.2.1 --port=3306 --user=kelompokit12 --password=passwordit
 ```
 ### Screenshot
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 14
 ### Cara Pengerjaan
@@ -967,7 +966,7 @@ lynx localhost:8003
 ```
 ### Screenshot
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 15
 ### Cara Pengerjaan
@@ -986,7 +985,7 @@ ab -n 100 -c 10 -p register.json -T application/json http://192.239.4.1:8001/api
 ```
 ### Screenshot
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 16
 ### Cara Pengerjaan
@@ -1005,7 +1004,7 @@ ab -n 100 -c 10 -p register.json -T application/json http://192.239.4.1:8001/api
 ```
 ### Screenshot
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 17
 ### Cara Pengerjaan
@@ -1024,7 +1023,7 @@ ab -n 100 -c 10 -H "Authorization: Bearer $token" http://192.239.4.1:8001/api/me
 ```
 ### Screenshot
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 18
 ### Cara Pengerjaan
@@ -1056,7 +1055,7 @@ ab -n 100 -c 10 -p login.json -T application/json http://www.riegel.canyon.a09.c
 ```
 ### Screenshot
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 19
 ### Cara Pengerjaan
@@ -1144,7 +1143,7 @@ service php8.0-fpm restart
 ```
 ### Screenshot
 ### Kendala yang Dihadapi
-
+Tidak ada kendala
 
 ## Soal 20
 ### Cara Pengerjaan
@@ -1179,3 +1178,4 @@ pm.max_spare_servers = 20
 ```
 ### Screenshot
 ### Kendala yang Dihadapi
+Tidak ada kendala
