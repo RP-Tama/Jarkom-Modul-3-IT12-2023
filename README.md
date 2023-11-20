@@ -682,15 +682,19 @@ Menggunakan hasil konfigurasi yang sama seperti nomor 7, selanjutkan menjalankan
 ab -n 200 -c 10 http://www.granz.channel.it12.com/ 
 ```
 ### Screenshot
-Round Robin
+Round Robin <br>
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/774cc1c3-9bda-4631-bc61-cd620d01b577)
-Least-connection
+
+Least-connection <br>
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/789a130f-ba7e-4d8e-beff-1e66716ec298)
-IP Hash
+
+IP Hash <br>
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/e3f57b77-3913-4a3a-85ce-83ea69fc4bcd)
-Generic-hash
+
+Generic-hash <br>
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/8c053a4c-7f33-4de4-a148-59cb7ae06117)
-Grafik
+
+Grafik <br>
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/4c5dc892-d789-4eab-899a-2ec825a1cfa9)
 ### Kendala yang Dihadapi
 Tidak ada kendala
@@ -704,10 +708,13 @@ ab -n 100 -c 10 http://www.granz.channel.it12.com/
 ### Screenshot
 3 worker
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/962665a4-a964-48d3-88c0-d68da2137d46)
+
 2 worker
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/b3c6b04f-75d3-40b2-9100-692d0193700f)
+
 1 worker
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/7c519721-62bd-4c06-99eb-746ab274477e)
+
 Grafik
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/a1d619e5-da75-4b65-a553-6c808252adb9)
 ### Kendala yang Dihadapi
