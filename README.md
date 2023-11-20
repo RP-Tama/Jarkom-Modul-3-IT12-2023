@@ -499,6 +499,8 @@ service isc-dhcp-relay start
 Melakukan uncommend pada file ```/etc/sysctl.conf``` pada bagian ```net.ipv4.ip_forward=1```
 Melakukan restart di 4 client
 ### Screenshot
+![WhatsApp Image 2023-11-18 at 17 04 44](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/ce8849da-5745-4e87-ad05-475c393856d1)
+
 ### Kendala yang Dihadapi
 
 
