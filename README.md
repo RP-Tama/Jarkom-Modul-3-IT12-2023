@@ -681,6 +681,9 @@ Menggunakan hasil konfigurasi yang sama seperti nomor 7, selanjutkan menjalankan
 ```
 ab -n 200 -c 10 http://www.granz.channel.it12.com/ 
 ```
+### Link Grimoire
+https://docs.google.com/document/d/1mohYPfdrYNrDcyaPxucaRoE_yba93k99ilNl0JMXrrY/edit?usp=sharing
+
 ### Screenshot
 Round Robin <br>
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/774cc1c3-9bda-4631-bc61-cd620d01b577)
