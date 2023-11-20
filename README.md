@@ -498,7 +498,7 @@ Melakukan restart di 4 client
 
 ## Soal 5
 ### Cara Pengerjaan
-Menambahkan command default-lease-time dan max-lease-time pada DHCP Server lanjutan dari kode sebelumnya untuk setting peminjaman IP selama 3 menit untuk switch 3 dan peminjaman IP selama 12 menit untuk switch 4 dan waktu maksimal selama 96 menit
+Menambahkan command ```default-lease-time``` dan ```max-lease-time``` pada DHCP Server lanjutan dari kode sebelumnya untuk setting peminjaman IP selama 3 menit untuk switch 3 dan peminjaman IP selama 12 menit untuk switch 4 dan waktu maksimal selama 96 menit
 ```
 echo 'subnet 192.239.1.0 netmask 255.255.255.0 {
 }
