@@ -682,6 +682,16 @@ Menggunakan hasil konfigurasi yang sama seperti nomor 7, selanjutkan menjalankan
 ab -n 200 -c 10 http://www.granz.channel.it12.com/ 
 ```
 ### Screenshot
+Round Robin
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/774cc1c3-9bda-4631-bc61-cd620d01b577)
+Least-connection
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/789a130f-ba7e-4d8e-beff-1e66716ec298)
+IP Hash
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/e3f57b77-3913-4a3a-85ce-83ea69fc4bcd)
+Generic-hash
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/8c053a4c-7f33-4de4-a148-59cb7ae06117)
+Grafik
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/4c5dc892-d789-4eab-899a-2ec825a1cfa9)
 ### Kendala yang Dihadapi
 Tidak ada kendala
 
@@ -692,6 +702,14 @@ Menggunakan hasil konfigurasi yang sama seperti nomor 7, selanjutkan menjalankan
 ab -n 100 -c 10 http://www.granz.channel.it12.com/ 
 ```
 ### Screenshot
+3 worker
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/962665a4-a964-48d3-88c0-d68da2137d46)
+2 worker
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/b3c6b04f-75d3-40b2-9100-692d0193700f)
+1 worker
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/7c519721-62bd-4c06-99eb-746ab274477e)
+Grafik
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/a1d619e5-da75-4b65-a553-6c808252adb9)
 ### Kendala yang Dihadapi
 Tidak ada kendala
 
@@ -984,6 +1002,7 @@ Memasukkan command pada client
 ab -n 100 -c 10 -p register.json -T application/json http://192.239.4.1:8001/api/auth/register
 ```
 ### Screenshot
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/6697968b-cd9b-4765-8a58-75f659905671)
 ### Kendala yang Dihadapi
 Tidak ada kendala
 
@@ -1003,6 +1022,7 @@ Memasukkan command pada client
 ab -n 100 -c 10 -p register.json -T application/json http://192.239.4.1:8001/api/auth/login
 ```
 ### Screenshot
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/51aaa782-b2dd-411e-9598-2e74aaddb1b1)
 ### Kendala yang Dihadapi
 Tidak ada kendala
 
@@ -1022,6 +1042,7 @@ Melakukan testing
 ab -n 100 -c 10 -H "Authorization: Bearer $token" http://192.239.4.1:8001/api/me
 ```
 ### Screenshot
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/007fdc1e-0171-4b48-8be7-86cb366c063e)
 ### Kendala yang Dihadapi
 Tidak ada kendala
 
@@ -1142,6 +1163,9 @@ pm.max_spare_servers = 20' > /etc/php/8.0/fpm/pool.d/www.conf
 service php8.0-fpm restart
 ```
 ### Screenshot
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/89af1502-3eef-4a78-ba2f-c17777aa88bf)
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/a883c718-a87d-4b6d-938c-772d5ce7b668)
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/a960aba7-667f-462f-8491-c534ca763e59)
 ### Kendala yang Dihadapi
 Tidak ada kendala
 
@@ -1177,5 +1201,6 @@ pm.min_spare_servers = 5
 pm.max_spare_servers = 20
 ```
 ### Screenshot
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/b22ea29a-705e-423f-8553-6e63509277c5)
 ### Kendala yang Dihadapi
 Tidak ada kendala
