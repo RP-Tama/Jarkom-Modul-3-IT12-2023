@@ -666,7 +666,7 @@ ab -n 1000 -c 100 http://www.granz.channel.it12.com/
 
 ## Soal 8
 ### Cara Pengerjaan
-Menggunakan hasil konfigurasi yang sama seperti nomor 7, selanjutkan menjalankan command berikut pada client
+Menggunakan hasil konfigurasi yang sama seperti nomor 7, selanjutkan menjalankan command berikut pada client untuk masing masing algoritma load balancer yaitu round robin, least-connection, IP hash, dan generic hash
 ```
 ab -n 200 -c 10 http://www.granz.channel.it12.com/ 
 ```
@@ -676,7 +676,7 @@ ab -n 200 -c 10 http://www.granz.channel.it12.com/
 
 ## Soal 9
 ### Cara Pengerjaan
-Menggunakan hasil konfigurasi yang sama seperti nomor 7, selanjutkan menjalankan command berikut pada client
+Menggunakan hasil konfigurasi yang sama seperti nomor 7, selanjutkan menjalankan command berikut pada client dengan pengecekan 1 worker, 2 worker, dan 3 worker
 ```
 ab -n 100 -c 10 http://www.granz.channel.it12.com/ 
 ```
@@ -686,6 +686,18 @@ ab -n 100 -c 10 http://www.granz.channel.it12.com/
 
 ## Soal 10
 ### Cara Pengerjaan
+Menambahkan konfigurasi berikut dari setup yang sudah dilakukan sebelumnya
+```
+mkdir /etc/nginx/rahasisakita
+htpasswd -c /etc/nginx/rahasisakita/htpasswd netics
+```
+Menambahkan password ajkit12
+Memasukkan code berikut pada setup nginx
+```
+auth_basic "Restricted Content";
+auth_basic_user_file /etc/nginx/rahasisakita/htpasswd;
+```
+Mengakses url ```http://www.granz.channel.it12.com/```
 ### Screenshot
 ![WhatsApp Image 2023-11-16 at 09 46 48](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/54ab346b-a241-4165-87b8-b21296732892)
 ### Kendala yang Dihadapi
@@ -693,6 +705,38 @@ ab -n 100 -c 10 http://www.granz.channel.it12.com/
 
 ## Soal 11
 ### Cara Pengerjaan
+Menambahkan konfigurasi pada nginx menjadi
+```
+echo 'upstream worker {
+    server 192.239.3.1;
+    server 192.239.3.2;
+    server 192.239.3.3;
+}
+
+server {
+    listen 80;
+    server_name granz.channel.it12.com www.granz.channel.it12.com;
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    location / {
+        proxy_pass http://worker;
+    }
+
+    location ~ /its {
+        proxy_pass https://www.its.ac.id;
+        proxy_set_header Host www.its.ac.id;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}' > /etc/nginx/sites-available/lb_php
+```
+Menjalankan perintah berikut pada client
+```
+lynx www.granz.channel.it12.com/its
+```
 ### Screenshot
 ![WhatsApp Image 2023-11-16 at 10 11 03](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/8ea9cdfd-2154-4ac0-90d8-97b17680df2b)
 ### Kendala yang Dihadapi
@@ -700,6 +744,47 @@ ab -n 100 -c 10 http://www.granz.channel.it12.com/
 
 ## Soal 12
 ### Cara Pengerjaan
+Menambahkan konfigurasi pada nginx sebelumnya menjadi
+```
+echo 'upstream worker {
+    server 192.239.3.1;
+    server 192.239.3.2;
+    server 192.239.3.3;
+}
+
+server {
+    listen 80;
+    server_name granz.channel.it12.com www.granz.channel.it12.com;
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    location / {
+        allow 192.239.3.69;
+        allow 192.239.3.70;
+        allow 192.239.4.167;
+        allow 192.239.4.168;
+        deny all;
+        proxy_pass http://worker;
+    }
+
+    location /its {
+        proxy_pass https://www.its.ac.id;
+        proxy_set_header Host www.its.ac.id;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}' > /etc/nginx/sites-available/lb_php
+```
+Menambahkan fixed address pada client yang ditambahkan pada konfigurasi dhcp server
+```
+host Revolte {
+    harware ethernet fe:c0:13:f5:1c:02;
+    fixed-address 192.173.3.69;
+}
+```
+Restart ulang node client (misalkan revolte)
 ### Screenshot
 ![WhatsApp Image 2023-11-16 at 10 48 58](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/400a7824-f72a-4a2d-955e-35fc04e50d92)
 
@@ -709,12 +794,47 @@ ab -n 100 -c 10 http://www.granz.channel.it12.com/
 
 ## Soal 13
 ### Cara Pengerjaan
+Menambahkan konfigurasi pada database server yaitu Denken
+```
+echo '# This group is read both by the client and the server
+# use it for options that affect everything
+[client-server]
+
+# Import all .cnf files from configuration directory
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/
+
+# Options affecting the MySQL server (mysqld)
+[mysqld]
+skip-networking=0
+skip-bind-address
+' > /etc/mysql/my.cnf
+```
+Mengganti bind address pada /etc/mysql/mariadb.conf.d/50-server.cnf menjadi 0.0.0.0
+Melakukan restart my sql dengan ```service mysql restart```
+Menjalankan perintah berikut
+```
+mysql -u root -p
+```
+```
+CREATE USER 'kelompokit12'@'%' IDENTIFIED BY 'passwordit12';
+CREATE USER 'kelompokit12'@'localhost' IDENTIFIED BY 'passwordit12';
+CREATE DATABASE dbkelompoka09;
+GRANT ALL PRIVILEGES ON *.* TO 'kelompokit12'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'kelompokit12'@'localhost';
+FLUSH PRIVILEGES;
+```
+Mengecek pada laravel worker dengan perintah
+```
+mariadb --host=192.239.2.1 --port=3306 --user=kelompokit12 --password=passwordit12 dbkelompokit12 -e "SHOW DATABASES;"
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 14
 ### Cara Pengerjaan
+
 ### Screenshot
 ### Kendala yang Dihadapi
 
