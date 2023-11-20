@@ -404,6 +404,10 @@ echo 'options {
 service bind9 start
 ```
 ### Screenshot
+![WhatsApp Image 2023-11-18 at 23 32 03](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/3b09b378-9bcf-4780-bbc6-160d73a948dc)
+![WhatsApp Image 2023-11-18 at 23 31 46](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/a720a13e-6962-4532-88f8-4d1024a06067)
+![WhatsApp Image 2023-11-18 at 23 31 32](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/03dca801-2b9c-441f-8c9d-f825f78c9dc8)
+![WhatsApp Image 2023-11-18 at 23 31 16](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/bb40d358-b44b-4919-acdb-98bfe4a34c16)
 ### Kendala yang Dihadapi
 
 
@@ -450,6 +454,8 @@ subnet 192.239.4.0 netmask 255.255.255.0 {
 } ' > /etc/dhcp/dhcpd.conf
 ```
 ### Screenshot
+![WhatsApp Image 2023-11-18 at 16 37 59](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/144fbcde-daed-4d47-9c33-d4b1e0c098c1)
+
 ### Kendala yang Dihadapi
 
 
@@ -548,6 +554,7 @@ INTERFACESv6=""' > /etc/default/isc-dhcp-server
 service isc-dhcp-server restart
 ```
 ### Screenshot
+![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/8de608f4-5f56-499c-9ffb-e4064120c911)
 ### Kendala yang Dihadapi
 
 
@@ -589,6 +596,9 @@ service nginx restart
 ```
 Menjalankan command ```lynx localhost``` di masing masing worker
 ### Screenshot
+![WhatsApp Image 2023-11-18 at 23 43 35](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/c2e999a7-1d5c-428f-84d8-90c49374a80c)
+![WhatsApp Image 2023-11-19 at 00 02 55](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/849cb759-1419-48a7-ad1f-55f65ed548fa)
+![WhatsApp Image 2023-11-19 at 00 09 31](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/6b1fc8f4-da8c-4d9f-b2c6-105a1559bea5)
 ### Kendala yang Dihadapi
 
 
