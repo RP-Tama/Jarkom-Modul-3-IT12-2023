@@ -151,36 +151,402 @@ Config
 
 ## Soal 0
 ### Cara Pengerjaan
-### Screenshot
-### Kendala yang Dihadapi
+Melakukan setup menggunakan command dan agar tidak perlu dilakukan setiap mengakses terminal dapat disimpan dalam bashrc di setiap node
+* Aura (DHCP Relay)
+  ```
+  apt-get update
+  apt-get install isc-dhcp-relay -y
+  ```
+* Himmel (DHCP Server)
+  ```
+  echo 'nameserver 192.239.1.2' > /etc/resolv.conf
+  apt-get update
+  apt-get install isc-dhcp-server -y
+  ```
+* Heiter (DNS Server)
+  ```
+  echo 'nameserver 192.168.122.1' > /etc/resolv.conf'
+  apt-get update
+  apt-get install bind9 -y
+  ```
+* Eisen (Load Balancer)
+  ```
+  echo 'nameserver 192.239.1.2' > /etc/resolv.conf
+  apt-get update
+  apt-get install apache2-utils -y
+  apt-get install nginx -y
+  apt-get install lynx -y
+  service nginx start
+  ```
+* Denken (Database Server)
+  ```
+  echo 'nameserver 192.239.1.2' > /etc/resolv.conf
+  apt-get update
+  apt-get install mariadb-server -y
+  service mysql start
+  ```
+  Mengganti address menjadi 8.8.8.8 dan direstart
+  ```
+  nano /etc/mysql/mariadb.conf.d/50-server.cnf
+  service mysql restart
+  ```
+* Revolte (Client)
+  ```
+  apt update
+  apt install lynx -y
+  apt install htop -y
+  apt install apache2-utils -y
+  apt-get install jq -y
+  ```
+* Richter (Client)
+  ```
+  apt update
+  apt install lynx -y
+  apt install htop -y
+  apt install apache2-utils -y
+  apt-get install jq -y
+  ```
+* Stark (Client)
+  ```
+  apt update
+  apt install lynx -y
+  apt install htop -y
+  apt install apache2-utils -y
+  apt-get install jq -y
+  ```
+* Sein (Client)
+  ```
+  apt update
+  apt install lynx -y
+  apt install htop -y
+  apt install apache2-utils -y
+  apt-get install jq -y
+  ```
+* Lawine (PHP Worker)
+  ```
+  echo 'nameserver 192.239.1.2' > /etc/resolv.conf
+  apt-get update
+  apt-get install nginx -y
+  apt-get install wget -y
+  apt-get install unzip -y
+  apt-get install lynx -y
+  apt-get install htop -y
+  apt-get install apache2-utils -y
+  apt-get install php7.3-fpm php7.3-common php7.3-mysql php7.3-gmp   php7.3-curl php7.3-intl php7.3-mbstring php7.3-xmlrpc php7.3-gd   php7.3-xml php7.3-cli php7.3-zip -y
+  service nginx start
+  service php7.3-fpm start
+  ```
+* Linie (PHP Worker)
+  ```
+  echo 'nameserver 192.239.1.2' > /etc/resolv.conf
+  apt-get update
+  apt-get install nginx -y
+  apt-get install wget -y
+  apt-get install unzip -y
+  apt-get install lynx -y
+  apt-get install htop -y
+  apt-get install apache2-utils -y
+  apt-get install php7.3-fpm php7.3-common php7.3-mysql php7.3-gmp   php7.3-curl php7.3-intl php7.3-mbstring php7.3-xmlrpc php7.3-gd   php7.3-xml php7.3-cli php7.3-zip -y
+  service nginx start
+  service php7.3-fpm start
+  ```
+* Lugner (PHP Worker)
+  ```
+  echo 'nameserver 192.239.1.2' > /etc/resolv.conf
+  apt-get update
+  apt-get install nginx -y
+  apt-get install wget -y
+  apt-get install unzip -y
+  apt-get install lynx -y
+  apt-get install htop -y
+  apt-get install apache2-utils -y
+  apt-get install php7.3-fpm php7.3-common php7.3-mysql php7.3-gmp   php7.3-curl php7.3-intl php7.3-mbstring php7.3-xmlrpc php7.3-gd   php7.3-xml php7.3-cli php7.3-zip -y
+  service nginx start
+  service php7.3-fpm start
+  ```
+* Frieren (Laravel Worker)
+  ```
+  echo 'nameserver 192.239.1.2' > /etc/resolv.conf
+  apt-get update
+  apt-get install lynx -y
+  apt-get install mariadb-client -y
+  # Test connection from worker to database
+  # mariadb --host=192.239.2.1 --port=3306   --user=kelompokait12 --password=passwordit12 dbkelompokit12 -e "SHOW DATABASES;"
+  apt-get install -y lsb-release ca-certificates apt-transport-https software-properties-common gnupg2
+  curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
+  sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+  apt-get update
+  apt-get install php8.0-mbstring php8.0-xml php8.0-cli   php8.0-common php8.0-intl php8.0-opcache php8.0-readline php8.0-mysql php8.0-fpm php8.0-curl unzip wget -y
+  apt-get install nginx -y
+  service nginx start
+  service php8.0-fpm start
+  ```
+* Flamme (Laravel Worker)
+    ```
+  echo 'nameserver 192.239.1.2' > /etc/resolv.conf
+  apt-get update
+  apt-get install lynx -y
+  apt-get install mariadb-client -y
+  # Test connection from worker to database
+  # mariadb --host=192.239.2.1 --port=3306   --user=kelompokait12 --password=passwordit12 dbkelompokit12 -e "SHOW DATABASES;"
+  apt-get install -y lsb-release ca-certificates apt-transport-https software-properties-common gnupg2
+  curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
+  sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+  apt-get update
+  apt-get install php8.0-mbstring php8.0-xml php8.0-cli   php8.0-common php8.0-intl php8.0-opcache php8.0-readline php8.0-mysql php8.0-fpm php8.0-curl unzip wget -y
+  apt-get install nginx -y
+  service nginx start
+  service php8.0-fpm start
+  ```
+* Fern (Laravel Worker)
+    ```
+  echo 'nameserver 192.239.1.2' > /etc/resolv.conf
+  apt-get update
+  apt-get install lynx -y
+  apt-get install mariadb-client -y
+  # Test connection from worker to database
+  # mariadb --host=192.239.2.1 --port=3306   --user=kelompokait12 --password=passwordit12 dbkelompokit12 -e "SHOW DATABASES;"
+  apt-get install -y lsb-release ca-certificates apt-transport-https software-properties-common gnupg2
+  curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
+  sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+  apt-get update
+  apt-get install php8.0-mbstring php8.0-xml php8.0-cli   php8.0-common php8.0-intl php8.0-opcache php8.0-readline php8.0-mysql php8.0-fpm php8.0-curl unzip wget -y
+  apt-get install nginx -y
+  service nginx start
+  service php8.0-fpm start
+  ```
 
 
 ## Soal 1
 ### Cara Pengerjaan
+Mengubah node Lugner (php worker) dan Fern (laravel worker) untuk menambahkan domain riegel.canyon.it12.com untuk laravel dan granz.channel.it12.com untuk php yang diarahkan pada worker IP berakhiran 1
+* Fern (Laravel)
+  ```
+  auto eth0
+  iface eth0 inet static
+	address 192.239.4.1
+	netmask 255.255.255.0
+	gateway 192.239.4.0
+  ```
+* Lugner (PHP)
+  ```
+  auto eth0
+  iface eth0 inet static
+	address 192.239.3.1
+	netmask 255.255.255.0
+	gateway 192.239.3.0
+  ```
+Menambahkan kode berikut pada Heiter yang bertindak sebagai DNS Server
+```
+echo 'zone "riegel.canyon.it12.com" {
+    type master;
+    file "/etc/bind/jarkom/riegel.canyon.it12.com";
+};
+
+zone "granz.channel.it12.com" {
+    type master;
+    file "/etc/bind/jarkom/granz.channel.it12.com";
+};
+
+zone "1.239.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/jarkom/1.239.192.in-addr.arpa";
+};' > /etc/bind/named.conf.local
+
+mkdir -p /etc/bind/jarkom
+cp /etc/bind/db.local /etc/bind/jarkom/riegel.canyon.it12.com
+cp /etc/bind/db.local /etc/bind/jarkom/granz.channel.it12.com
+cp /etc/bind/db.local /etc/bind/jarkom/1.239.192.in-addr.arpa
+
+echo ';
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     riegel.canyon.it12.com. root.riegel.canyon.it12.com. (
+                        2023111401      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      riegel.canyon.it12.com.
+@       IN      A       192.239.4.1     ; IP Fern
+www     IN      CNAME   riegel.canyon.it12.com.' > /etc/bind/jarkom/riegel.canyon.a09.com
+
+echo '
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     granz.channel.it12.com. root.granz.channel.it12.com. (
+                        2023111401      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      granz.channel.a09.com.
+@       IN      A       192.239.3.1     ; IP Lugner
+www     IN      CNAME   granz.channel.it12.com.' > /etc/bind/jarkom/granz.channel.it12.com
+
+echo 'options {
+      directory "/var/cache/bind";
+
+      forwarders {
+              192.168.122.1;
+      };
+
+      // dnssec-validation auto;
+      allow-query{any;};
+      auth-nxdomain no;    # conform to RFC1035
+      listen-on-v6 { any; };
+}; ' >/etc/bind/named.conf.options
+
+service bind9 start
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 2
 ### Cara Pengerjaan
+Menambahkan kode pada Himmel sebagai DHCP Server untuk switch 3 yaitu 
+```
+echo 'subnet 192.239.1.0 netmask 255.255.255.0 {
+}
+
+subnet 192.239.2.0 netmask 255.255.255.0 {
+}
+
+subnet 192.239.3.0 netmask 255.255.255.0 {
+    range 192.239.3.16 192.239.3.32;
+    range 192.239.3.64 192.239.3.80;
+    option routers 192.239.3.1;
+}' > /etc/dhcp/dhcpd.conf
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 3
 ### Cara Pengerjaan
+Menambahkan kode pada Himmel sebagai DHCP Server dari yang sudah dilakukan pada nomer sebelumnya untuk switch 4 yaitu
+```
+echo 'subnet 192.239.1.0 netmask 255.255.255.0 {
+}
+
+subnet 192.239.2.0 netmask 255.255.255.0 {
+}
+
+subnet 192.239.3.0 netmask 255.255.255.0 {
+    range 192.239.3.16 192.239.3.32;
+    range 192.239.3.64 192.239.3.80;
+    option routers 192.239.3.1;
+}
+
+subnet 192.239.4.0 netmask 255.255.255.0 {
+    range 192.239.4.12 192.239.4.20;
+    range 192.239.4.160 192.239.4.168;
+    option routers 192.239.4.1;
+} ' > /etc/dhcp/dhcpd.conf
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 4
 ### Cara Pengerjaan
+Menambahkan option broadcast address dan option domain name server dari kode yang sebelumnya
+```
+subnet 192.239.3.0 netmask 255.255.255.0 {
+    ...
+    option broadcast-address 192.239.3.255;
+    option domain-name-servers 192.239.1.2;
+    ...
+}
+
+subnet 192.239.4.0 netmask 255.255.255.0 {
+    option broadcast-address 192.239.4.255;
+    option domain-name-servers 192.239.1.2;
+} 
+```
+Lalu melakukan setup untuk DHCP Relay dan menjalankan kode berikut
+```
+echo '# Defaults for isc-dhcp-relay initscript
+# sourced by /etc/init.d/isc-dhcp-relay
+# installed at /etc/default/isc-dhcp-relay by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+# What servers should the DHCP relay forward requests to?
+SERVERS="192.239.1.2"
+
+# On what interfaces should the DHCP relay (dhrelay) serve DHCP requests?
+INTERFACES="eth1 eth2 eth3 eth4"
+
+# Additional options that are passed to the DHCP relay daemon?
+OPTIONS=""' > /etc/default/isc-dhcp-relay
+
+service isc-dhcp-relay start 
+```
+Melakukan uncommend pada file ```/etc/sysctl.conf``` pada bagian ```net.ipv4.ip_forward=1```
+Melakukan restart di 4 client
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 5
 ### Cara Pengerjaan
+Menambahkan command default-lease-time dan max-lease-time pada DHCP Server lanjutan dari kode sebelumnya untuk setting peminjaman IP selama 3 menit untuk switch 3 dan peminjaman IP selama 12 menit untuk switch 4 dan waktu maksimal selama 96 menit
+```
+echo 'subnet 192.239.1.0 netmask 255.255.255.0 {
+}
+
+subnet 192.239.2.0 netmask 255.255.255.0 {
+}
+
+subnet 192.239.3.0 netmask 255.255.255.0 {
+    range 192.239.3.16 192.239.3.32;
+    range 192.239.3.64 192.239.3.80;
+    option routers 192.239.3.1;
+    option broadcast-address 192.239.3.255;
+    option domain-name-servers 192.239.1.2;
+    default-lease-time 180;
+    max-lease-time 5760;
+}
+
+subnet 192.239.4.0 netmask 255.255.255.0 {
+    range 192.239.4.12 192.239.4.20;
+    range 192.239.4.160 192.239.4.168;
+    option routers 192.239.4.1;
+    option broadcast-address 192.239.4.255;
+    option domain-name-servers 192.239.1.2;
+    default-lease-time 720;
+    max-lease-time 5760;
+}' > /etc/dhcp/dhcpd.conf
+
+echo '# Defaults for isc-dhcp-server (sourced by /etc/init.d/isc-dhcp-server)
+
+# Path to dhcpd'\''s config file (default: /etc/dhcp/dhcpd.conf).
+DHCPDv4_CONF=/etc/dhcp/dhcpd.conf
+DHCPDv6_CONF=/etc/dhcp/dhcpd6.conf
+
+# Path to dhcpd'\''s PID file (default: /var/run/dhcpd.pid).
+DHCPDv4_PID=/var/run/dhcpd.pid
+DHCPDv6_PID=/var/run/dhcpd6.pid
+
+# Additional options to start dhcpd with.
+#<----->Don'\''t use options -cf or -pf here; use DHCPD_CONF/ DHCPD_PID instead
+OPTIONS=""
+
+# On what interfaces should the DHCP server (dhcpd) serve DHCP requests?
+#<----->Separate multiple interfaces with spaces, e.g. "eth0 eth1".
+INTERFACESv4="eth0"
+INTERFACESv6=""' > /etc/default/isc-dhcp-server
+
+service isc-dhcp-server restart
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
