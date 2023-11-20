@@ -553,24 +553,133 @@ service isc-dhcp-server restart
 
 ## Soal 6
 ### Cara Pengerjaan
+Melakukan konfigurasi untuk mendownload dan unzip setelah set up PHP Worker
+```
+wget -O '/var/www/granz.channel.it12.com' 'https://drive.google.com/u/0/uc?id=1ViSkRq7SmwZgdK64eRbr5Fm1EGCTPrU1&export=download'
+unzip -o /var/www/granz.channel.it12.com -d /var/www/
+rm /var/www/granz.channel.it12.com
+mv /var/www/modul-3 /var/www/granz.channel.it12.com
+```
+Melakukan konfigurasi pada nginx
+```
+cp /etc/nginx/sites-available/default /etc/nginx/sites-available/granz.channel.it12.com
+ln -s /etc/nginx/sites-available/granz.channel.it12.com /etc/nginx/sites-enabled/
+rm /etc/nginx/sites-enabled/default
+
+echo 'server {
+    listen 80;
+    server_name _;
+
+    root /var/www/granz.channel.it12.com;
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.3-fpm.sock;  # Sesuaikan versi PHP dan socket
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}' > /etc/nginx/sites-available/granz.channel.it12.com
+
+service nginx restart
+```
+Menjalankan command ```lynx localhost``` di masing masing worker
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 7
 ### Cara Pengerjaan
+Melakukan konfigurasi Load Balancing di node Eisen di mana mengarahkan domain DNS Server pada IP Eisen sebagai Load Balancer
+```
+echo ';
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     riegel.canyon.it12.com. root.riegel.canyon.it12.com. (
+                        2023111401      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      riegel.canyon.it12.com.
+@       IN      A       192.239.2.2     ; IP LB Eiken
+www     IN      CNAME   riegel.canyon.it12.com.' > /etc/bind/jarkom/riegel.canyon.a09.com
+
+echo '
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     granz.channel.it12.com. root.granz.channel.it12.com. (
+                        2023111401      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      granz.channel.it12.com.
+@       IN      A       192.239.2.2     ; IP LB Eiken
+www     IN      CNAME   granz.channel.it12.com.' > /etc/bind/jarkom/granz.channel.it12.com
+```
+Melakukan konfigurasi nginx pada Eisen
+```
+cp /etc/nginx/sites-available/default /etc/nginx/sites-available/lb_php
+
+echo ' upstream worker {
+    server 192.239.3.1;
+    server 192.239.3.2;
+    server 192.239.3.3;
+}
+
+server {
+    listen 80;
+    server_name granz.channel.it12.com www.granz.channel.it12.com;
+
+    root /var/www/html;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://worker;
+    }
+} ' > /etc/nginx/sites-available/lb_php
+
+ln -s /etc/nginx/sites-available/lb_php /etc/nginx/sites-enabled/
+rm /etc/nginx/sites-enabled/default
+
+service nginx restart
+```
+Melakukan konfigurasi pada client dan menjalankan printah berikut
+```
+ab -n 1000 -c 100 http://www.granz.channel.it12.com/ 
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 8
 ### Cara Pengerjaan
+Menggunakan hasil konfigurasi yang sama seperti nomor 7, selanjutkan menjalankan command berikut pada client
+```
+ab -n 200 -c 10 http://www.granz.channel.it12.com/ 
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
 
 ## Soal 9
 ### Cara Pengerjaan
+Menggunakan hasil konfigurasi yang sama seperti nomor 7, selanjutkan menjalankan command berikut pada client
+```
+ab -n 100 -c 10 http://www.granz.channel.it12.com/ 
+```
 ### Screenshot
 ### Kendala yang Dihadapi
 
