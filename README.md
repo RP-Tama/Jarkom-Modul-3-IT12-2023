@@ -706,13 +706,13 @@ Menggunakan hasil konfigurasi yang sama seperti nomor 7, selanjutkan menjalankan
 ab -n 100 -c 10 http://www.granz.channel.it12.com/ 
 ```
 ### Screenshot
-3 worker
+3 worker <br>
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/962665a4-a964-48d3-88c0-d68da2137d46)
 
-2 worker
+2 worker <br>
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/b3c6b04f-75d3-40b2-9100-692d0193700f)
 
-1 worker
+1 worker <br>
 ![image](https://github.com/RP-Tama/Jarkom-Modul-3-IT12-2023/assets/107543354/7c519721-62bd-4c06-99eb-746ab274477e)
 
 Grafik
